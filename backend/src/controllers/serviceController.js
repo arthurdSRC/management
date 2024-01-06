@@ -47,7 +47,26 @@ class ServiceController {
     }
   }
 
+  static async updateService(req, res) {
 
+    try {
+      const { id } = req.params;
+
+      const data = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        image: req.body.image,
+      }
+
+      const response = await Service.findByIdAndUpdate(id, data)
+
+      res.status(200).json({ message: "Serviço atualizado com sucesso" })
+
+    } catch (error) {
+      res.status(500).json({ message: "Falha ao atualizar serviço" })
+    }
+  }
 }
 
 export default ServiceController;
