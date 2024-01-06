@@ -26,8 +26,6 @@ class PartyController {
     const checkPartyBudget = (budget, services) => {
       const price = services.reduce((sum, service) => sum + service.price, 0);
 
-      console.log(price, budget)
-
       if (price > budget) {
         return false
       }
@@ -69,6 +67,30 @@ class PartyController {
       res.status(500).json({ message: "falha ao deletar festa", error })
     }
   }
+
+  static async updateParty(req, res) {
+    try {
+      const { id } = req.params;
+
+      const party = {
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description,
+        image: req.body.image,
+        budget: req.body.budget,
+        service: req.body.service,
+      }
+
+      await Party.findByIdAndUpdate(id, party)
+
+
+      res.status(200).json({message:"festa atualizada com sucesso"})
+    } catch (error) {
+      res.status(500).json({message:"falha ao atualizar festa"})
+    }
+  }
+
+
 }
 
 
