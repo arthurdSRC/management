@@ -2,7 +2,6 @@ import { Service } from "../models/serviceModel.js";
 
 class ServiceController {
 
-
   static async getByService(req, res) {
     try {
       const { id } = req.params;
@@ -34,6 +33,17 @@ class ServiceController {
       res.status(201).json({ message: "Serviço criado com  sucesso" })
     } catch (error) {
       res.status(500).json({ message: "Falha ao criar Serviço", error })
+    }
+  }
+
+  static async deleteService(req, res) {
+
+    try {
+      const { id } = req.params;
+      const response = await Service.findByIdAndDelete(id)
+      res.status(200).json({ message: "Serviço deletado com sucesso" })
+    } catch (error) {
+      res.status(500).json({ message: "Falha ao deletar serviço" })
     }
   }
 
