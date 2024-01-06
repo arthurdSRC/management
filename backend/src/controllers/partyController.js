@@ -2,6 +2,16 @@ import { Party } from "../models/partyModel.js";
 
 class PartyController {
 
+  
+  static async getAllParty(req, res) {
+    try {
+      const response = await Party.find();
+      res.status(200).json(response)
+    } catch (error) {
+      res.status(500).json({ message: "Falha ao buscar", error })
+    }
+  }
+
   static async create(req, res) {
 
     const checkPartyBudget = (budget, services) => {
@@ -39,6 +49,9 @@ class PartyController {
     }
 
   }
+
+
+
 
 }
 
