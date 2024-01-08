@@ -1,11 +1,10 @@
-
+import { Outlet } from "react-router-dom"
 
 function App() {
 
-
   return (
     <>
-      <h1>party time</h1>
+     <Outlet/>
     </>
   )
 }
