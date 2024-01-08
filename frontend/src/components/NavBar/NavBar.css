@@ -1,0 +1,28 @@
+.navbar {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar h2 {
+  color: #01a5b1;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.links a {
+  color: #131e2f;
+  transition: 0.2s linear;
+}
+
+.links a:hover{
+  color: #01a5b1;
+}
